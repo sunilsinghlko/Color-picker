@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>color Picker</title>
+    <style>
+      #box {
+        min-height: 250px;
+        width: 300px;
+        border: 10px groove grey;
+        border-radius: 15px;
+        padding: 25px;
+        margin: 100px auto;
+        box-shadow: 2px 3px 30px;
+      }
+      p {
+        height: 100px;
+        border: 5px double aqua;
+        text-align: center;
+        line-height: 100px;
+        font-size: 40px;
+        background: #0f0f0f;
+        border-radius: 15px 0px 15px 0px;
+        color: rgb(11, 3, 3);
+      }
+      button {
+        text-align: center;
+        font-size: 28px;
+        border-radius: 10px;
+        background: blue;
+        color: whitesmoke;
+      }
+    </style>
+  </head>
+  <body onload="randomColor()">
+    <div id="box">
+      <p>#bac3fa</p>
+      <button onclick="setColor()">Set color</button>
+    </div>
+
+    <script>
+      function randomColor() {
+        var str = "096a4f351b72d8ce"; // reson for making bcz we want 0 to 9 number and a to f char
+        var color = "#"; // color # se strat hoga isliye variable bna
+        var color1 = "#";
+        for (
+          var i = 0;
+          i <= 5;
+          i++ //  bcz hame 6 character chahiye apne hexa decimalcode me isliye loop chala liye
+        ) {
+          var rIndex = Math.floor(Math.random() * 16); // ye hame 0 se 15 tak random number dega aur then ham str[rIndex] se mtlb str se random index lenge
+          var rIndex1 = Math.floor(Math.random() * 16);
+          color = color + str[rIndex]; // yha ye loop tab tak chalega jab tak condition false naaa ho jaye mtlb 6 bar chalega aur # ke bad 6 charc. add hote rahenge
+          color1 = color1 + str[rIndex1]; // ye just dusra color generate krne ke liye
+        }
+        var p = document.querySelector("p");
+        p.style.background = color;
+        p.innerText = color;
+        p.style.border = "10px groove " + color1;
+      }
+      window.setInterval(randomColor, 1000);
+
+      function setColor() {
+        var color = document.querySelector("p").innerText; // first get color from paragraph
+        document.querySelector("#box").style.background = color;
+      }
+    </script>
+  </body>
+</html>
